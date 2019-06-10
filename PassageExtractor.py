@@ -1,11 +1,12 @@
 import subprocess
+from subprocess import run
 import matplotlib.pyplot as plt
 import re
 
 
 def extractPassages(filePath):
-    #dumpindexPath = "indri-5.8-install/bin/dumpindex"
-    #indexPath = "/data/AdvancedIR/IndexDocsClean5.8/"
+    dumpindexPath = "../indri-5.8-install/bin/dumpindex"
+    indexPath = "../IndexDocsClean5.8/"
     file = open(filePath, 'rb')
     passageDict = {}
     dealtDocs = set()
@@ -14,9 +15,9 @@ def extractPassages(filePath):
         docName = lineParts[2].decode("utf-8")
         if docName not in dealtDocs:
             dealtDocs.add(docName)
-            #docIndexID = subprocess.check_output([dumpindexPath, indexPath + " di docno" + docName], shell=True)
-            #p = subprocess.Popen([dumpindexPath, indexPath + " dt " + docIndexID + " > temp.txt"], shell=True)
-            #p.wait()
+            docIndexID = subprocess.check_output(f'{dumpindexPath} {indexPath} di docno {docName}', shell=True, text=True).strip()
+            run('ls -la > temp' , shell=True)
+            run(f'{dumpindexPath} {indexPath} dt {docIndexID} > temp.txt', shell=True)
 
             startIdx = 0
             passageText = ""
@@ -62,9 +63,6 @@ def extractPassages(filePath):
                     passageText = ""
                 if not docLine:
                     break
-        else:
-            print(passageDict.keys())
-            exit(0)
 
 
 if __name__ == '__main__':
