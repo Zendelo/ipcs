@@ -1,0 +1,52 @@
+// if current passage is empty (new document or searching for next passage to annotate)
+if (currPassage.isEmpty()) {
+    // if line smaller than min passage length
+    if (line.length() < 500) {
+        // add the whole line to the passage
+        currPassage += line;
+        // go to next line
+        line = br.readLine();
+    }
+    // if line longer than min passage length
+    else {
+        // get at least 500 chars and a space
+        breakPoint = line.indexOf(" ", 500);
+        if (breakPoint == -1) {
+            currPassage += " " + line;
+            line = br.readLine();
+        } else {
+            currPassage += " " + line.substring(0, breakPoint);
+            // update line string
+            line = line.replace(line.substring(0, breakPoint + 1), "");
+        }
+        // annotate passage and write results to File
+        annotate(currPassage, writer, hm, changed);
+        // update line string
+        line = line.replace(currPassage, "");
+        // empty current passage
+        currPassage = "";
+    }
+}
+// part of passage already exists
+else {
+    if (line.length() < 500 - currPassage.length()) {
+        if (!line.equals("")){
+            currPassage += " " + line;
+        }
+        line = br.readLine();
+    } else {
+        breakPoint = line.indexOf(" ", 500 - currPassage.length());
+        if (breakPoint == -1) {
+            currPassage += " " + line;
+            line = br.readLine();
+        } else {
+            currPassage += " " + line.substring(0, breakPoint);
+            // update line string
+            line = line.replace(line.substring(0, breakPoint + 1), "");
+        }
+        // annotate passage and write results to File
+        annotate(currPassage, writer, hm, changed);
+        // empty current passage
+        currPassage = "";
+    }
+}
