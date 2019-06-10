@@ -9,7 +9,9 @@ def extractPassages(filePath):
     file = open(filePath, 'rb')
     passageDict = {}
     dealtDocs = set()
-    for line in file:
+    for i, line in enumerate(file):
+        if not i % 100:
+            print(f'Hooray! {i} lines passed') 
         lineParts = line.split()
         docName = lineParts[2].decode("utf-8")
         if docName not in dealtDocs:
