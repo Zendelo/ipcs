@@ -68,18 +68,5 @@ def extractPassages(filePath):
 
 
 if __name__ == '__main__':
-    # X = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5,
-    #      0.6, 0.7, 0.8, 0.9, 1.0]
-    # y = [18.27, 22.41, 23.80, 25.04, 26.04, 26.57,
-    #      26.96, 27.17, 26.95, 26.15, 24.98]
-    # plt.plot(X, y, 'k', marker="o", label="ST")
-    # plt.ylim(18.0, 30.0)
-    # plt.xticks(X)
-    # plt.xlabel(r'$\lambda$')
-    # plt.ylabel("MAP")
-    # plt.title("ROBUST")
-    # plt.legend()
-    # plt.show()
     print("Hi")
-
     extractPassages("initial_list")
