@@ -1,7 +1,6 @@
-import subprocess
-from subprocess import run
-import matplotlib.pyplot as plt
+import json
 import re
+import subprocess as sp
 
 
 def extractPassages(filePath):
@@ -15,9 +14,10 @@ def extractPassages(filePath):
         docName = lineParts[2].decode("utf-8")
         if docName not in dealtDocs:
             dealtDocs.add(docName)
-            docIndexID = subprocess.check_output(f'{dumpindexPath} {indexPath} di docno {docName}', shell=True, text=True).strip()
-            run('ls -la > temp' , shell=True)
-            run(f'{dumpindexPath} {indexPath} dt {docIndexID} > temp.txt', shell=True)
+            docIndexID = sp.check_output(f'{dumpindexPath} {indexPath} di docno {docName}', shell=True,
+                                         text=True).strip()
+            sp.run('ls -la > temp', shell=True)
+            sp.run(f'{dumpindexPath} {indexPath} dt {docIndexID} > temp.txt', shell=True)
 
             startIdx = 0
             passageText = ""
@@ -43,7 +43,8 @@ def extractPassages(filePath):
                                 # get 300 words
                                 passageText += " ".join(docLineParts[:300])
                                 docLine = " ".join(docLineParts[300:])
-                                passageDict[str(docName) + "_" + str(startIdx) + "_" + str(len(passageText))] = passageText
+                                passageDict[
+                                    str(docName) + "_" + str(startIdx) + "_" + str(len(passageText))] = passageText
                                 startIdx += len(passageText)
                                 passageText = ""
                         # part of passage already exists
@@ -55,7 +56,8 @@ def extractPassages(filePath):
                             else:
                                 passageText += " ".join(docLineParts[:300])
                                 docLine = " ".join(docLineParts[300:])
-                                passageDict[str(docName) + "_" + str(startIdx) + "_" + str(len(passageText))] = passageText
+                                passageDict[
+                                    str(docName) + "_" + str(startIdx) + "_" + str(len(passageText))] = passageText
                                 startIdx += len(passageText)
                                 passageText = ""
                     passageDict[str(docName) + "_" + str(startIdx) + "_" + str(len(passageText))] = passageText
@@ -63,8 +65,9 @@ def extractPassages(filePath):
                     passageText = ""
                 if not docLine:
                     break
+    with open('fullPassagesDict', 'w') as json_file:
+        json.dump(passageDict, json_file)
 
 
 if __name__ == '__main__':
-    print("Hi")
     extractPassages("initial_list")
