@@ -1,0 +1,486 @@
+<parameters>
+  <query>
+    <number>2009001</number>
+    <text>#combine[passage300:300]( nobel prize )</text>
+  </query>
+  <query>
+    <number>2009002</number>
+    <text>#combine[passage300:300]( best movie )</text>
+  </query>
+  <query>
+    <number>2009003</number>
+    <text>#combine[passage300:300]( yoga exercise )</text>
+  </query>
+  <query>
+    <number>2009004</number>
+    <text>#combine[passage300:300]( mean average precision reciprocal rank references precision recall proceedings
+      journal )
+    </text>
+  </query>
+  <query>
+    <number>2009005</number>
+    <text>#combine[passage300:300]( chemists physicists scientists alchemists periodic table elements )</text>
+  </query>
+  <query>
+    <number>2009006</number>
+    <text>#combine[passage300:300]( opera singer italian spanish soprano )</text>
+  </query>
+  <query>
+    <number>2009010</number>
+    <text>#combine[passage300:300]( applications bayesian networks bioinformatics )</text>
+  </query>
+  <query>
+    <number>2009011</number>
+    <text>#combine[passage300:300]( olive oil health benefit )</text>
+  </query>
+  <query>
+    <number>2009012</number>
+    <text>#combine[passage300:300]( vitiligo pigment disorder cause treatment )</text>
+  </query>
+  <query>
+    <number>2009013</number>
+    <text>#combine[passage300:300]( native american indian wars colonial americans )</text>
+  </query>
+  <query>
+    <number>2009014</number>
+    <text>#combine[passage300:300]( content based image retrieval )</text>
+  </query>
+  <query>
+    <number>2009015</number>
+    <text>#combine[passage300:300]( voice ip )</text>
+  </query>
+  <query>
+    <number>2009020</number>
+    <text>#combine[passage300:300]( ibm computer )</text>
+  </query>
+  <query>
+    <number>2009022</number>
+    <text>#combine[passage300:300]( szechwan dish food cuisine )</text>
+  </query>
+  <query>
+    <number>2009023</number>
+    <text>#combine[passage300:300]( plays shakespeare macbeth )</text>
+  </query>
+  <query>
+    <number>2009026</number>
+    <text>#combine[passage300:300]( generalife gardens )</text>
+  </query>
+  <query>
+    <number>2009028</number>
+    <text>#combine[passage300:300]( fastest speed bike scooter car motorcycle )</text>
+  </query>
+  <query>
+    <number>2009029</number>
+    <text>#combine[passage300:300]( personality type career famous )</text>
+  </query>
+  <query>
+    <number>2009033</number>
+    <text>#combine[passage300:300]( al andalus taifa kingdoms )</text>
+  </query>
+  <query>
+    <number>2009035</number>
+    <text>#combine[passage300:300]( bermuda triangle )</text>
+  </query>
+  <query>
+    <number>2009036</number>
+    <text>#combine[passage300:300]( notting hill film actors )</text>
+  </query>
+  <query>
+    <number>2009039</number>
+    <text>#combine[passage300:300]( roman architecture )</text>
+  </query>
+  <query>
+    <number>2009040</number>
+    <text>#combine[passage300:300]( steam engine )</text>
+  </query>
+  <query>
+    <number>2009041</number>
+    <text>#combine[passage300:300]( scythians )</text>
+  </query>
+  <query>
+    <number>2009042</number>
+    <text>#combine[passage300:300]( sun java )</text>
+  </query>
+  <query>
+    <number>2009043</number>
+    <text>#combine[passage300:300]( nasa missions )</text>
+  </query>
+  <query>
+    <number>2009046</number>
+    <text>#combine[passage300:300]( penrose tiles tiling theory )</text>
+  </query>
+  <query>
+    <number>2009047</number>
+    <text>#combine[passage300:300]( kali s child criticisms reviews psychoanalysis ramakrishna s mysticism )</text>
+  </query>
+  <query>
+    <number>2009051</number>
+    <text>#combine[passage300:300]( rabindranath tagore bengali literature )</text>
+  </query>
+  <query>
+    <number>2009053</number>
+    <text>#combine[passage300:300]( finland car industry manufacturer saab sisu )</text>
+  </query>
+  <query>
+    <number>2009054</number>
+    <text>#combine[passage300:300]( tampere region tourist attractions )</text>
+  </query>
+  <query>
+    <number>2009055</number>
+    <text>#combine[passage300:300]( european union expansion )</text>
+  </query>
+  <query>
+    <number>2009061</number>
+    <text>#combine[passage300:300]( france second world war normandy )</text>
+  </query>
+  <query>
+    <number>2009062</number>
+    <text>#combine[passage300:300]( social network group selection )</text>
+  </query>
+  <query>
+    <number>2009063</number>
+    <text>#combine[passage300:300]( d normandy invasion )</text>
+  </query>
+  <query>
+    <number>2009064</number>
+    <text>#combine[passage300:300]( stock exhange insider trading crime )</text>
+  </query>
+  <query>
+    <number>2009065</number>
+    <text>#combine[passage300:300]( sunflowers vincent van gogh )</text>
+  </query>
+  <query>
+    <number>2009066</number>
+    <text>#combine[passage300:300]( folk metal groups finland )</text>
+  </query>
+  <query>
+    <number>2009067</number>
+    <text>#combine[passage300:300]( probabilistic models information retrieval )</text>
+  </query>
+  <query>
+    <number>2009068</number>
+    <text>#combine[passage300:300]( china great wall )</text>
+  </query>
+  <query>
+    <number>2009069</number>
+    <text>#combine[passage300:300]( singer britain s got talent )</text>
+  </query>
+  <query>
+    <number>2009070</number>
+    <text>#combine[passage300:300]( health care reform plan )</text>
+  </query>
+  <query>
+    <number>2009071</number>
+    <text>#combine[passage300:300]( earthquake prediction )</text>
+  </query>
+  <query>
+    <number>2009073</number>
+    <text>#combine[passage300:300]( web link network analysis )</text>
+  </query>
+  <query>
+    <number>2009074</number>
+    <text>#combine[passage300:300]( web ranking scoring algorithm )</text>
+  </query>
+  <query>
+    <number>2009076</number>
+    <text>#combine[passage300:300]( sociology social issues aspects science fiction )</text>
+  </query>
+  <query>
+    <number>2009077</number>
+    <text>#combine[passage300:300]( torrent client technology )</text>
+  </query>
+  <query>
+    <number>2009078</number>
+    <text>#combine[passage300:300]( supervised machine learning algorithm )</text>
+  </query>
+  <query>
+    <number>2009079</number>
+    <text>#combine[passage300:300]( dangerous paraben bisphenol )</text>
+  </query>
+  <query>
+    <number>2009082</number>
+    <text>#combine[passage300:300]( south african nature reserve )</text>
+  </query>
+  <query>
+    <number>2009085</number>
+    <text>#combine[passage300:300]( operating system mutual exclusion )</text>
+  </query>
+  <query>
+    <number>2009087</number>
+    <text>#combine[passage300:300]( history bordeaux )</text>
+  </query>
+  <query>
+    <number>2009088</number>
+    <text>#combine[passage300:300]( hatha yoga deity asana )</text>
+  </query>
+  <query>
+    <number>2009089</number>
+    <text>#combine[passage300:300]( world wide web history )</text>
+  </query>
+  <query>
+    <number>2009091</number>
+    <text>#combine[passage300:300]( himalaya trekking peak )</text>
+  </query>
+  <query>
+    <number>2009092</number>
+    <text>#combine[passage300:300]( ski waxing water wave )</text>
+  </query>
+  <query>
+    <number>2009093</number>
+    <text>#combine[passage300:300]( french revolution )</text>
+  </query>
+  <query>
+    <number>2009095</number>
+    <text>#combine[passage300:300]( weka software )</text>
+  </query>
+  <query>
+    <number>2009096</number>
+    <text>#combine[passage300:300]( eiffel )</text>
+  </query>
+  <query>
+    <number>2009104</number>
+    <text>#combine[passage300:300]( lunar mare formation mechanism )</text>
+  </query>
+  <query>
+    <number>2009105</number>
+    <text>#combine[passage300:300]( musicians jazz )</text>
+  </query>
+  <query>
+    <number>2009108</number>
+    <text>#combine[passage300:300]( sustainability indicators metrics )</text>
+  </query>
+  <query>
+    <number>2009109</number>
+    <text>#combine[passage300:300]( circus acts skills )</text>
+  </query>
+  <query>
+    <number>2009110</number>
+    <text>#combine[passage300:300]( paul dead hoax theory )</text>
+  </query>
+  <query>
+    <number>2009111</number>
+    <text>#combine[passage300:300]( europe solar power facility )</text>
+  </query>
+  <query>
+    <number>2009112</number>
+    <text>#combine[passage300:300]( rally car female woman driver )</text>
+  </query>
+  <query>
+    <number>2009113</number>
+    <text>#combine[passage300:300]( toy story buzz lightyear 3d rendering computer generated imagery )</text>
+  </query>
+  <query>
+    <number>2009115</number>
+    <text>#combine[passage300:300]( virtual museums )</text>
+  </query>
+  <query>
+    <number>2010003</number>
+    <text>#combine[passage300:300]( monuments india )</text>
+  </query>
+  <query>
+    <number>2010004</number>
+    <text>#combine[passage300:300]( indian food )</text>
+  </query>
+  <query>
+    <number>2010006</number>
+    <text>#combine[passage300:300]( evolution storage devices )</text>
+  </query>
+  <query>
+    <number>2010007</number>
+    <text>#combine[passage300:300]( marilyn monroe played impersonator actor )</text>
+  </query>
+  <query>
+    <number>2010010</number>
+    <text>#combine[passage300:300]( cheese production )</text>
+  </query>
+  <query>
+    <number>2010014</number>
+    <text>#combine[passage300:300]( composer museum )</text>
+  </query>
+  <query>
+    <number>2010016</number>
+    <text>#combine[passage300:300]( capital punishment )</text>
+  </query>
+  <query>
+    <number>2010017</number>
+    <text>#combine[passage300:300]( lady gaga )</text>
+  </query>
+  <query>
+    <number>2010018</number>
+    <text>#combine[passage300:300]( christopher columbus discovery america )</text>
+  </query>
+  <query>
+    <number>2010019</number>
+    <text>#combine[passage300:300]( gallo roman architecture paris )</text>
+  </query>
+  <query>
+    <number>2010020</number>
+    <text>#combine[passage300:300]( electricity source france )</text>
+  </query>
+  <query>
+    <number>2010021</number>
+    <text>#combine[passage300:300]( nazi war criminals )</text>
+  </query>
+  <query>
+    <number>2010023</number>
+    <text>#combine[passage300:300]( retirement age )</text>
+  </query>
+  <query>
+    <number>2010025</number>
+    <text>#combine[passage300:300]( mold health )</text>
+  </query>
+  <query>
+    <number>2010026</number>
+    <text>#combine[passage300:300]( american pre columbian civilizations )</text>
+  </query>
+  <query>
+    <number>2010027</number>
+    <text>#combine[passage300:300]( paul auster )</text>
+  </query>
+  <query>
+    <number>2010030</number>
+    <text>#combine[passage300:300]( minimaism art music )</text>
+  </query>
+  <query>
+    <number>2010031</number>
+    <text>#combine[passage300:300]( science women )</text>
+  </query>
+  <query>
+    <number>2010032</number>
+    <text>#combine[passage300:300]( japanese ballerina )</text>
+  </query>
+  <query>
+    <number>2010033</number>
+    <text>#combine[passage300:300]( collapse housing bubble usa )</text>
+  </query>
+  <query>
+    <number>2010034</number>
+    <text>#combine[passage300:300]( worm virus )</text>
+  </query>
+  <query>
+    <number>2010035</number>
+    <text>#combine[passage300:300]( psychological effects music )</text>
+  </query>
+  <query>
+    <number>2010036</number>
+    <text>#combine[passage300:300]( northern finland languages lapland sami )</text>
+  </query>
+  <query>
+    <number>2010037</number>
+    <text>#combine[passage300:300]( social network api )</text>
+  </query>
+  <query>
+    <number>2010038</number>
+    <text>#combine[passage300:300]( dinosaur )</text>
+  </query>
+  <query>
+    <number>2010039</number>
+    <text>#combine[passage300:300]( emmy awards )</text>
+  </query>
+  <query>
+    <number>2010040</number>
+    <text>#combine[passage300:300]( president united states )</text>
+  </query>
+  <query>
+    <number>2010041</number>
+    <text>#combine[passage300:300]( japanese art )</text>
+  </query>
+  <query>
+    <number>2010043</number>
+    <text>#combine[passage300:300]( list films surrealist category )</text>
+  </query>
+  <query>
+    <number>2010045</number>
+    <text>#combine[passage300:300]( messi argentine )</text>
+  </query>
+  <query>
+    <number>2010046</number>
+    <text>#combine[passage300:300]( meg ryan movie )</text>
+  </query>
+  <query>
+    <number>2010047</number>
+    <text>#combine[passage300:300]( famous flute solos symphony )</text>
+  </query>
+  <query>
+    <number>2010048</number>
+    <text>#combine[passage300:300]( pacific navigators australia explorers )</text>
+  </query>
+  <query>
+    <number>2010049</number>
+    <text>#combine[passage300:300]( european fruit trees )</text>
+  </query>
+  <query>
+    <number>2010050</number>
+    <text>#combine[passage300:300]( novels won booker prize )</text>
+  </query>
+  <query>
+    <number>2010054</number>
+    <text>#combine[passage300:300]( indian railways )</text>
+  </query>
+  <query>
+    <number>2010056</number>
+    <text>#combine[passage300:300]( cold war )</text>
+  </query>
+  <query>
+    <number>2010057</number>
+    <text>#combine[passage300:300]( einstein relativity theory )</text>
+  </query>
+  <query>
+    <number>2010061</number>
+    <text>#combine[passage300:300]( dangerous paraben bisphenol )</text>
+  </query>
+  <query>
+    <number>2010068</number>
+    <text>#combine[passage300:300]( biography medalist olympic figure skating )</text>
+  </query>
+  <query>
+    <number>2010069</number>
+    <text>#combine[passage300:300]( summer flowers )</text>
+  </query>
+  <query>
+    <number>2010070</number>
+    <text>#combine[passage300:300]( tai chi styles forms )</text>
+  </query>
+  <query>
+    <number>2010072</number>
+    <text>#combine[passage300:300]( fisher price toys toddler )</text>
+  </query>
+  <query>
+    <number>2010075</number>
+    <text>#combine[passage300:300]( volcanic ash cloud flight disruption )</text>
+  </query>
+  <query>
+    <number>2010079</number>
+    <text>#combine[passage300:300]( famous chess endgames )</text>
+  </query>
+  <query>
+    <number>2010095</number>
+    <text>#combine[passage300:300]( jazz charles mingus miles davis collaboration interaction personal relationship
+      album )
+    </text>
+  </query>
+  <query>
+    <number>2010096</number>
+    <text>#combine[passage300:300]( predictive analysis logistic regression model program application )</text>
+  </query>
+  <query>
+    <number>2010097</number>
+    <text>#combine[passage300:300]( health risk coca leaf )</text>
+  </query>
+  <query>
+    <number>2010100</number>
+    <text>#combine[passage300:300]( house concrete wood )</text>
+  </query>
+  <query>
+    <number>2010105</number>
+    <text>#combine[passage300:300]( gulf oil spill )</text>
+  </query>
+  <query>
+    <number>2010106</number>
+    <text>#combine[passage300:300]( organic food advantages disadvantages )</text>
+  </query>
+  <query>
+    <number>2010107</number>
+    <text>#combine[passage300:300]( factors determining human height )</text>
+  </query>
+</parameters>

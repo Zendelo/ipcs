@@ -17,10 +17,11 @@ print(df)
 
 
 def convert_token2char(docno, token):
-    docid = sp.run([f'indri-5.8-install/bin/dumpindex IndexDocsClean5.8/', 'di', 'docno', f'{docno}'],
+    dump_index_path = dp.ensure_file('~/ipcs/indri-5.8-install/bin/dumpindex')
+    index_path = dp.ensure_dir('~/ipcs/IndexDocsClean5.8')
+    docid = sp.run([dump_index_path, index_path, 'di', 'docno', f'{docno}'],
                    capture_output=True, text=True).stdout  # docid 2619640
-    positions = sp.run(f'indri-5.8-install/bin/dumpindex IndexDocsClean5.8/ dd {docid}', capture_output=True,
-                       text=True).stdout
+    positions = sp.run([dump_index_path, index_path, 'dd', f'{docid}'], capture_output=True, text=True).stdout
 
     for i, line in enumerate(positions.split('\n')):
         if 'Positions' in line:
@@ -31,5 +32,4 @@ def convert_token2char(docno, token):
     pos_df = pd.DataFrame(positions)
     print(pos_df)
 
-
-convert_token2char(52502, 4200)
+    convert_token2char(52502, 4200)
