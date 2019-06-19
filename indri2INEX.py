@@ -29,7 +29,12 @@ def convert_token2char(docno, token):
         if 'Tags' in line:
             last_line = i - 1
     positions = positions.split('\n')[first_line:last_line]
-    pos_df = pd.DataFrame(positions)[0].str.split(expand=True).drop(0).rename({0:'token',1:'start_char',2:'end_char'}, axis=1).set_index('token')
-    print(pos_df)
+    pos_df = pd.DataFrame(positions)[0].str.split(expand=True).drop(0).rename(
+        {0: 'token', 1: 'start_char', 2: 'end_char'}, axis=1).set_index('token')
+    start_char, end_char = pos_df.loc[token]
+    return start_char, end_char
 
-convert_token2char(52502, 4200)
+
+df['start_char'] = df.loc[:, ['docNo', 'start_token']].apply(lambda x: convert_token2char(*x)[0], axis=1)
+df['end_char'] = df.loc[:, ['docNo', 'end_token']].apply(lambda x: convert_token2char(*x)[1], axis=1)
+print(df)
