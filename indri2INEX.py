@@ -24,14 +24,14 @@ def convert_token2char(docno, token):
     positions = sp.run([dump_index_path, index_path, 'dd', f'{docid}'], capture_output=True, text=True).stdout
 
     for i, line in enumerate(positions.split('\n')):
-        if 'Positions' in line:
-            first_line = i + 1
+        if line.startswith('--- Positions'):
+            first_line = i + 2
         if 'Tags' in line:
             last_line = i - 1
     positions = positions.split('\n')[first_line:last_line]
-    pos_df = pd.DataFrame(positions)[0].str.split(expand=True).drop(0).rename(
-        {0: 'token', 1: 'start_char', 2: 'end_char'}, axis=1).set_index('token')
-    start_char, end_char = pos_df.loc[token]
+    pos_df = pd.DataFrame(positions)[0].str.split(expand=True)
+    pos_df = pos_df.rename({0: 'token', 1: 'start_char', 2: 'end_char'}, axis=1).set_index('token')
+    start_char, end_char = pos_df.loc[str(token)]
     return start_char, end_char
 
 
