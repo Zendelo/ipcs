@@ -70,6 +70,7 @@ def extractPassages(filePath):
                     break
     with open('fullPassagesDict', 'w') as json_file:
         json.dump(passageDict, json_file)
+    return passageDict
 
 
 if __name__ == '__main__':
