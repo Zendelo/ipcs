@@ -3,19 +3,6 @@ import dataparser as dp
 import subprocess as sp
 from time import time
 
-df = pd.read_csv(f'pass_bm25_baseline.run', sep='\t', header=None, names=['score', 'docNo', 'start_token', 'end_token'])
-queries_dict = dp.QueriesXMLParser(f'INEX_queires.xml').text_queries
-qids = pd.Series(list(queries_dict.keys()))
-
-indices = []
-for val in qids:
-    indices.extend([val] * 1000)
-df.insert(0, 'qid', indices)
-ranks = list(range(1, 1001)) * 120
-df.insert(2, 'rank', ranks)
-
-print(df)
-
 
 def convert_token2char(docno, start_token, end_token):
     dump_index_path = dp.ensure_file('~/ipcs/indri-5.8-install/bin/dumpindex')
@@ -38,14 +25,36 @@ def convert_token2char(docno, start_token, end_token):
     return start_char, end_char - start_char
 
 
-# def convert_token2char(docno, start_token, end_token):
-#     return start_token, end_token - start_token
+def create_main_df():
+    df = pd.read_csv(f'pass_bm25_baseline.run', sep='\t', header=None,
+                     names=['score', 'docNo', 'start_token', 'end_token'])
+    queries_dict = dp.QueriesXMLParser(f'INEX_queires.xml').text_queries
+    qids = pd.Series(list(queries_dict.keys()))
+
+    indices = []
+    for val in qids:
+        indices.extend([val] * 1000)
+    df.insert(0, 'qid', indices)
+    ranks = list(range(1, 1001)) * 120
+    df.insert(2, 'rank', ranks)
+    df[['start_char', 'length']] = df.loc[:, ['docNo', 'start_token', 'end_token']].apply(
+        (lambda x: convert_token2char(*x)), axis=1, result_type='expand')
+    df = df[['qid', 'docNo', 'rank', 'score', 'start_char', 'length']]
+    df.to_pickle('base_df.pkl')
+    return df
 
 
-df[['start_char', 'length']] = df.loc[:, ['docNo', 'start_token', 'end_token']].apply(
-    (lambda x: convert_token2char(*x)), axis=1, result_type='expand')
+def main():
+    try:
+        df_pkl = dp.ensure_file('base_df.pkl')
+        df = pd.read_pickle(df_pkl)
+    except AssertionError:
+        df = create_main_df()
 
-df = df[['qid', 'docNo', 'rank', 'score', 'start_char', 'length']]
+    print(['qid', 'it', 'docNo', 'rank', 'score', 'method', 'start_char', 'length'])
 
-print(df)
-df.to_pickle('base_df.pkl')
+    print(df)
+
+
+if __name__ == '__main__':
+    main()
