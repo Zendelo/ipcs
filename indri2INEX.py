@@ -20,9 +20,12 @@ def convert_token2char(docno, start_token, end_token):
     pos_df = pd.DataFrame(positions)[0].str.split(expand=True)
     pos_df = pos_df.rename({0: 'token', 1: 'start_char', 2: 'end_char'}, axis=1).set_index('token')
     start_char, _ = pos_df.loc[str(start_token)]
-    _, end_char = pos_df.loc[str(end_token)]
+    try:
+        _, end_char = pos_df.loc[str(end_token)]
+    except KeyError:
+        _, end_char = pos_df.loc[str(end_token - 1)]
 
-    return start_char, end_char - start_char
+    return start_char, str(int(end_char) - int(start_char))
 
 
 def create_main_df():

@@ -28,7 +28,7 @@ def extractPassages(filePath):
             passageText = ""
 
             with open("cur_doc.tmp", "w") as f:
-                f.writelines(docText.split('\n'))
+                f.write(docText)
 
             docText = open("cur_doc.tmp", 'r')
 
@@ -71,7 +71,7 @@ def extractPassages(filePath):
                     passageText = ""
                 if not docLine:
                     break
-    with open('fullPassagesDict', 'w') as json_file:
+    with open('fullPassagesDict.json', 'w') as json_file:
         json.dump(passageDict, json_file)
     return passageDict
 
