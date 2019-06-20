@@ -1,6 +1,7 @@
 import PassageExtractor.extractPassages
 import subprocess as sp
 import dataparser as dp
+import pickle
 
 if __name__ == '__main__':
 
@@ -23,11 +24,7 @@ if __name__ == '__main__':
                 else:
                     trec_qrels_list.append(f'{qid} 1 {pid} 0')
 
-    # for line in inex_qrels.readlines():
-    #     lineParts = line.split()
-    #     passages = lineParts[6:]
-    #     for passage in passages:
-    #         # write line in format: qid 0 docid_startidx_lengthOfPassage 1
-    #         trec_line = f'{lineParts[0]} 0 {lineParts[2]}_{passage.replace(":","_")} 1'
+    with open('trec_qrels_list.pkl', 'wb') as f:
+        pickle.dump(trec_qrels_list, f)
 
 
