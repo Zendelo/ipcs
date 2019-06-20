@@ -20,14 +20,17 @@ def extractPassages(filePath):
             passageDict[queryID] = {}
         if docName not in dealtDocs:
             dealtDocs.add(docName)
-            docIndexID = sp.check_output(f'{dumpindexPath} {indexPath} di docno {docName}', capture_output=True,
-                                         text=True).stdout
-            sp.run(f'{dumpindexPath} {indexPath} dt {docIndexID} > temp.txt', shell=True)
+            docIndexID = sp.run([f'{dumpindexPath}', f'{indexPath}', 'di', 'docno', f'{docName}'], capture_output=True, text=True).stdout
+            docText = sp.run([dumpindexPath, indexPath, 'dt', docIndexID ], capture_output=True,
+                   text=True).stdout
 
             startIdx = 0
             passageText = ""
 
-            docText = open("temp.txt")
+            with open("cur_doc.tmp", "w") as f:
+                f.writelines(docText.split('\n'))
+
+            docText = open("cur_doc.tmp", 'r')
 
             while True:
                 docLine = re.sub(' +', ' ', docText.readline().strip("\n"))

@@ -52,8 +52,11 @@ def main():
         df = create_main_df()
 
     print(['qid', 'it', 'docNo', 'rank', 'score', 'method', 'start_char', 'length'])
+    df.insert(1, 'iteration', 'Q0')
+    df.insert(5, 'method', 'bm25')
 
     print(df)
+    df.to_csv('testing.res', sep='\t', index=False, header=False)
 
 
 if __name__ == '__main__':

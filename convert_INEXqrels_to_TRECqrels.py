@@ -1,4 +1,4 @@
-import PassageExtractor.extractPassages
+from PassageExtractor import extractPassages
 import subprocess as sp
 import dataparser as dp
 import pickle
