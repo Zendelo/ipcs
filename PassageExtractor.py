@@ -7,9 +7,12 @@ import pandas as pd
 dump_index_path = dp.ensure_file('~/ipcs/indri-5.8-install/bin/dumpindex')
 index_path = dp.ensure_dir('~/ipcs/IndexDocsClean5.8')
 
+
 def docno2docid(docno):
     """Converts docNo to docID"""
-    return sp.run([dump_index_path, index_path, 'di', 'docno', f'{docno}'], capture_output=True, text=True).stdout.strip('\n')
+    return sp.run([dump_index_path, index_path, 'di', 'docno', f'{docno}'], capture_output=True,
+                  text=True).stdout.strip('\n')
+
 
 def load_init_df(init_df_pkl='pkl_files/init_df.pkl', initial_list='initial_list'):
     try:
@@ -19,12 +22,15 @@ def load_init_df(init_df_pkl='pkl_files/init_df.pkl', initial_list='initial_list
         init_df = generate_init_df(initial_list)
     return init_df
 
+
 def generate_init_df(initial_list_path):
-    initial_df = pd.read_csv(initial_list_path, delim_whitespace=True, header=None, names=['qid', 'iteration', 'docNo', 'rank', 'score', 'indri'])
+    initial_df = pd.read_csv(initial_list_path, delim_whitespace=True, header=None,
+                             names=['qid', 'iteration', 'docNo', 'rank', 'score', 'indri'])
     print(initial_df)
     initial_df['docID'] = initial_df['docNo'].apply(docno2docid)
     initial_df.to_pickle('pkl_files/init_df.pkl')
     return initial_df
+
 
 def extract_passages(file_path):
     initial_df = load_init_df()
@@ -39,7 +45,6 @@ def extract_passages(file_path):
         doctext = sp.run([dumpindex_path, index_path, 'dt', docid], capture_output=True, text=True).stdout
         print(doctext)
         exit()
-
 
     #
     #     if not i % 100:
