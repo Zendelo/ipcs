@@ -19,18 +19,18 @@ def convert_token2char(docno, start_token, end_token):
     positions = positions.split('\n')[first_line:last_line]
     pos_df = pd.DataFrame(positions)[0].str.split(expand=True)
     pos_df = pos_df.rename({0: 'token', 1: 'start_char', 2: 'end_char'}, axis=1).set_index('token')
-    start_char, _ = pos_df.loc[str(start_token)]
+    start_char, _ = pos_df.loc[start_token]
     try:
-        _, end_char = pos_df.loc[str(end_token)]
+        _, end_char = pos_df.loc[end_token]
     except KeyError:
-        _, end_char = pos_df.loc[str(end_token - 1)]
+        _, end_char = pos_df.loc[str(int(end_token) - 1)]
 
     return start_char, str(int(end_char) - int(start_char))
 
 
 def create_main_df():
     df = pd.read_csv(f'pass_bm25_baseline.run', sep='\t', header=None,
-                     names=['score', 'docNo', 'start_token', 'end_token'])
+                     names=['score', 'docNo', 'start_token', 'end_token'], dtype=str)
     queries_dict = dp.QueriesXMLParser(f'INEX_queires.xml').text_queries
     qids = pd.Series(list(queries_dict.keys()))
 
@@ -40,6 +40,7 @@ def create_main_df():
     df.insert(0, 'qid', indices)
     ranks = list(range(1, 1001)) * 120
     df.insert(2, 'rank', ranks)
+    print(df.loc[56999])
     df[['start_char', 'length']] = df.loc[:, ['docNo', 'start_token', 'end_token']].apply(
         (lambda x: convert_token2char(*x)), axis=1, result_type='expand')
     df = df[['qid', 'docNo', 'rank', 'score', 'start_char', 'length']]
