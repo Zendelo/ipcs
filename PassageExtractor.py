@@ -4,22 +4,41 @@ import subprocess as sp
 import dataparser as dp
 import pandas as pd
 
+dump_index_path = dp.ensure_file('~/ipcs/indri-5.8-install/bin/dumpindex')
+index_path = dp.ensure_dir('~/ipcs/IndexDocsClean5.8')
 
 def docno2docid(docno):
     """Converts docNo to docID"""
-    return sp.run([dump_index_path, index_path, 'di', 'docno', f'{docno}'], capture_output=True, text=True).stdout
+    return sp.run([dump_index_path, index_path, 'di', 'docno', f'{docno}'], capture_output=True, text=True).stdout.strip('\n')
 
+def load_init_df(init_df_pkl='pkl_files/init_df.pkl', initial_list='initial_list'):
+    try:
+        init_file = dp.ensure_file(init_df_pkl)
+        init_df = pd.read_pickle(init_file)
+    except AssertionError:
+        init_df = generate_init_df(initial_list)
+    return init_df
+
+def generate_init_df(initial_list_path):
+    initial_df = pd.read_csv(initial_list_path, delim_whitespace=True, header=None, names=['qid', 'iteration', 'docNo', 'rank', 'score', 'indri'])
+    print(initial_df)
+    initial_df['docID'] = initial_df['docNo'].apply(docno2docid)
+    initial_df.to_pickle('pkl_files/init_df.pkl')
+    return initial_df
 
 def extract_passages(file_path):
-    initial_df = pd.read_csv(file_path, sep='\t', header=None,
-                             names=['qid', 'iteration', 'docNo', 'rank', 'score', 'indri'])
-    initial_df['docID'] = initial_df['docNo'].apply(docno2docid)
-
+    initial_df = load_init_df()
     passage_dict = {}
     dealt_docs = set()
 
-    for _df in initial_df.groupby(['qid', 'docID']):
-        print(_df)
+    print(initial_df)
+    for index, _df in initial_df.groupby(['qid', 'docID']):
+        qid = index[0]
+        docid = index[1]
+        # print(dump
+        doctext = sp.run([dumpindex_path, index_path, 'dt', docid], capture_output=True, text=True).stdout
+        print(doctext)
+        exit()
 
 
     #
@@ -97,6 +116,4 @@ def main():
 
 
 if __name__ == '__main__':
-    dump_index_path = dp.ensure_file('~/ipcs/indri-5.8-install/bin/dumpindex')
-    index_path = dp.ensure_dir('~/ipcs/IndexDocsClean5.8')
     main()
