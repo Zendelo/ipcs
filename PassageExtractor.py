@@ -18,7 +18,6 @@ def load_init_df(init_df_pkl='pkl_files/init_df.pkl', initial_list='initial_list
         init_df = pd.read_pickle(init_file)
     except AssertionError:
         init_df = generate_init_df(initial_list)
-    print(init_df['docNo'])
     return init_df
 
 
@@ -34,7 +33,6 @@ def extract_docs(dict_file_json):
     initial_df = load_init_df()
     docs_dict = {}
 
-    print(initial_df)
     for index, _df in initial_df.groupby(['qid', 'docID']):
         qid = index[0]
         docid = index[1]
@@ -43,7 +41,6 @@ def extract_docs(dict_file_json):
         doctext = sp.run([dump_index_path, index_path, 'dt', docid], capture_output=True, text=True).stdout.split()
         doctxt_st = ' '.join(doctext[3:-2])
         docs_dict[docid] = doctxt_st
-    print(docs_dict)
     with open(dict_file_json, 'w') as json_file:
         json_file.write(json.dump(docs_dict))
     return docs_dict
@@ -87,7 +84,6 @@ def convert_df(init_df: pd.DataFrame, psg_dict: dict):
         ranks.extend(list(range(1, len(_df) + 1)))
     df.insert(5, 'rank', ranks)
     df.insert(7, 'method', 'bm25-indri')
-    print(df)
     inex_df = df.loc[:, ['qid', 'iteration', 'docno', 'rank', 'score', 'method', 'start_idx', 'length']]
     inex_df.to_csv('bm25_indri.run', sep=' ', index=False, header=False)
     df.to_pickle(f'{pkl_dir}/full_df.pkl')
