@@ -6,6 +6,7 @@ import pickle
 if __name__ == '__main__':
 
     # initial_res_file = dp.ensure_file("~/ipcs/initial_list")
+    queries_df = pd.read_pickle('~/ipcs/ipcs/pkl_files/queries_df.pkl')
     passageDict = dp.ensure_file("~/ipcs/ipcs/pkl_files/full_df.pkl")
     passageDict = pd.read_pickle(passageDict)
     inex_qrels = dp.ensure_file("~/ipcs/INEX_Qrels.txt")
@@ -24,8 +25,8 @@ if __name__ == '__main__':
         rel_ret_size = sp.run(['grep', '-v', 'all'], input=rel_ret_size, capture_output=True).stdout
         rel_ret_size = rel_ret_size.split()[2]
         if int(rel_ret_size) >= 300:
-            trec_qrels.write(f'{qid} 1 {docno}_{start_idx}_{length} 1\n')
+            trec_qrels.write(f'{queries_df.loc[qid].bert_qid} 1 {docno}_{start_idx}_{length} 1\n')
 
         else:
-            trec_qrels.write(f'{qid} 1 {docno}_{start_idx}_{length} 0\n')
+            trec_qrels.write(f'{queries_df.loc[qid].bert_qid} 1 {docno}_{start_idx}_{length} 0\n')
 
