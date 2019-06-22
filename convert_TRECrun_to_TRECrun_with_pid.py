@@ -19,10 +19,9 @@ if __name__ == '__main__':
     dealt_docs = set()
     for line in initial_res_file:
         qid, _, docno, rank, score, _ = line.split()
-        if docno not in dealt_docs:
-            dealt_docs.add(docno)
-            curr_df = df.loc[(df['qid'] == int(qid)) & (df['docno'] == docno)]
+        dealt_docs.add(docno)
+        curr_df = df.loc[(df['qid'] == int(qid)) & (df['docno'] == docno)]
 
-            for i, (_, row) in enumerate(curr_df.iterrows()):
-                rank = row['rank']
-                BERT_res_file.write(f'{qid} Q0 {row["docno"]}_{row["start_idx"]}_{row["length"]} {rank} {score} convert\n')
+        for i, (_, row) in enumerate(curr_df.iterrows()):
+            rank = row['rank']
+            BERT_res_file.write(f'{qid} Q0 {row["docno"]}_{row["start_idx"]}_{row["length"]} {rank} {score} convert\n')
