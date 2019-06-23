@@ -22,41 +22,43 @@ import tokenization
 flags = tf.flags
 FLAGS = flags.FLAGS
 
+set_num = '1'
+
 flags.DEFINE_string(
     "output_folder", "output_folder",
     "Folder where the TFRecord files will be writen.")
 
 flags.DEFINE_string(
     "vocab_file",
-    "./data/data_vocab.txt",
+    "./data/vocab.txt",
     "The vocabulary file that the BERT model was trained on.")
 
 flags.DEFINE_string(
-    "corpus", "./data/dedup.articles-paragraphs.cbor",
+    "corpus", " ",
     "Path to the cbor file containing the Wikipedia paragraphs.")
 
 flags.DEFINE_string(
-    "qrels_train", "./data/qrels",
+    "qrels_train", f"./treccar_dataset/train_set_{set_num}.qrels",
     "Path to the topic / relevant doc ids pairs for training.")
 
 flags.DEFINE_string(
-    "qrels_dev", "./data/qrels",
+    "qrels_dev", f"./treccar_dataset/test_set_{set_num}.qrels",
     "Path to the topic / relevant doc ids pairs for dev.")
 
 flags.DEFINE_string(
-    "qrels_test", "./data/qrels",
+    "qrels_test", f"./treccar_dataset/test_set_{set_num}.qrels",
     "Path to the topic / relevant doc ids pairs for test.")
 
 flags.DEFINE_string(
-    "run_train", "./data/run",
+    "run_train", f"./treccar_dataset/train_set_{set_num}.run",
     "Path to the topic / candidate doc ids pairs for training.")
 
 flags.DEFINE_string(
-    "run_dev", "./data/run",
+    "run_dev", f"./treccar_dataset/test_set_{set_num}.run",
     "Path to the topic / candidate doc ids pairs for dev.")
 
 flags.DEFINE_string(
-    "run_test", "./data/run",
+    "run_test", f"./treccar_dataset/test_set_{set_num}.run",
     "Path to the topic / candidate doc ids pairs for test.")
 
 flags.DEFINE_integer(
@@ -84,18 +86,17 @@ flags.DEFINE_integer(
 
 
 def convert_dataset(data, corpus, set_name, tokenizer):
-    output_path = FLAGS.output_folder + '/dataset_' + set_name + '.tf'
+    output_path = FLAGS.output_folder + '/dataset_' + set_name + '_' + set_num + '.tf'
 
     print('Converting {} to tfrecord'.format(set_name))
     start_time = time.time()
 
     random_title = list(corpus.keys())[0]
 
-    queries_df = pd.read_pickle('pkl_files/queries_df.pkl')
+    # queries_df = pd.read_pickle('pkl_files/queries_df.pkl')
     with tf.python_io.TFRecordWriter(output_path) as writer:
-        for i, qid in enumerate(data):
-            qrels, doc_titles = data[qid]
-            query = queries_df.loc[qid].bert_qid
+        for i, query in enumerate(data):
+            qrels, doc_titles = data[query]
             query = query.replace('enwiki:', '')
             query = query.replace('%20', ' ')
             query = query.replace('/', ' ')
